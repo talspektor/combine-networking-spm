@@ -10,6 +10,7 @@ import Foundation
 
 public protocol NetworkRequest {
     associatedtype Response: Decodable // The expected response type must be Decodable
+    associatedtype ServerError: Decodable, Error
     var url: URL? { get }
     var method: HTTPMethod { get }
     var headers: [String: String]? { get }

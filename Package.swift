@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "CombineGenericNetworking",
     platforms: [
-            .iOS(.v17), // Set the minimum iOS version here (e.g., iOS 13)
+            .iOS(.v17),
             .macOS(.v10_15),
             .tvOS(.v13),
             .watchOS(.v6)
