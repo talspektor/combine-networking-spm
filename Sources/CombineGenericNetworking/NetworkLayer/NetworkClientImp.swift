@@ -23,7 +23,7 @@ extension NetworkClient {
     /// The caller is responsible for checking the status code and decoding the data.
     /// - Parameter request: The NetworkRequest to perform.
     /// - Returns: A publisher that emits a tuple of Data and HTTPURLResponse, or a NetworkError.
-    public func performRequestWithDecodedResponse<Request: NetworkRequest>(_ request: Request) -> AnyPublisher<(Data, HTTPURLResponse), NetworkError> {
+    public func performRequest<Request: NetworkRequest>(_ request: Request) -> AnyPublisher<(Data, HTTPURLResponse), NetworkError> {
         guard let url = request.url else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
         }
@@ -68,7 +68,7 @@ public class NetworkClientImp: NetworkClient {
     /// The caller is responsible for checking the status code and decoding the data.
     /// - Parameter request: The NetworkRequest to perform.
     /// - Returns: A publisher that emits a tuple of Decodable response, and HTTPURLResponse, or a NetworkError.
-    public func performRequest<Request: NetworkRequest>(_ request: Request) -> AnyPublisher<(Request.Response, HTTPURLResponse), NetworkError> {
+    public func performRequestWithDecodedResponse<Request: NetworkRequest>(_ request: Request) -> AnyPublisher<(Request.Response, HTTPURLResponse), NetworkError> {
         guard let url = request.url else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
         }
